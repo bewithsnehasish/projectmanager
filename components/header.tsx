@@ -1,9 +1,10 @@
-import { SignedIn, SignedOut, SignInButton, UserButton } from "@clerk/nextjs";
+import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 import { Button } from "./ui/button";
 import { PenBox } from "lucide-react";
+import UserMenu from "./user-menu";
 
 const Header = () => {
   return (
@@ -11,7 +12,7 @@ const Header = () => {
       <nav className="py-6 px-4 flex items-center justify-between">
         <Link href="/">
           <Image
-            src={"/logo2.png"}
+            src={"/getsetdeployed2.png"}
             alt="GetSetDeployed Logo"
             width={200}
             height={56}
@@ -20,9 +21,9 @@ const Header = () => {
         </Link>
         <div className="flex items-center gap-4">
           <Link href="/project/create">
-            <Button variant={"destructive"}>
+            <Button variant={"destructive"} className="flex items-center gap-2">
               <PenBox size={20} />
-              <span>Create Project</span>
+              <span className="hidden md:inline">Create Project</span>
             </Button>
           </Link>
           <SignedOut>
@@ -30,7 +31,9 @@ const Header = () => {
               <Button variant={"outline"}>Login</Button>
             </SignInButton>
           </SignedOut>
-          <SignedIn></SignedIn>
+          <SignedIn>
+            <UserMenu />
+          </SignedIn>
         </div>
       </nav>
     </header>
