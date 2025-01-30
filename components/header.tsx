@@ -5,8 +5,10 @@ import React from "react";
 import { Button } from "./ui/button";
 import { PenBox } from "lucide-react";
 import UserMenu from "./user-menu";
+import { checkUser } from "@/lib/checkUser";
 
-const Header = () => {
+const Header = async () => {
+  await checkUser();
   return (
     <header className="container mx-auto">
       <nav className="py-6 px-4 flex items-center justify-between">
@@ -16,6 +18,7 @@ const Header = () => {
             alt="GetSetDeployed Logo"
             width={200}
             height={56}
+            priority
             className="h-10 w-auto object-contain"
           />
         </Link>
