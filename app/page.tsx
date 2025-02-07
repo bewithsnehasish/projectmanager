@@ -84,7 +84,7 @@ export default function Home() {
             {features.map((feature, index) => (
               <Card
                 key={index}
-                className="bg-gray-800 border-gray-700 hover:border-blue-500 transition-all"
+                className="bg-gray-800 text-white border-gray-700 hover:border-blue-500 transition-all"
               >
                 <CardContent className="p-8">
                   <div className="flex items-center justify-center w-16 h-16 mb-6 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg">
@@ -104,7 +104,7 @@ export default function Home() {
       {/* Companies Carousel */}
       <section className="py-20">
         <div className="container mx-auto">
-          <h3 className="text-3xl font-bold mb-12 text-center">
+          <h3 className="text-3xl text-white font-bold mb-12 text-center">
             Trusted by Industry Leaders
           </h3>
           <CompanyCarousel />
@@ -112,7 +112,7 @@ export default function Home() {
       </section>
 
       {/* FAQ Section */}
-      <section className="bg-gray-900 py-20 px-5">
+      <section className="bg-gray-900 text-white py-20 px-5">
         <div className="container mx-auto">
           <h3 className="text-3xl font-bold mb-12 text-center">
             Frequently Asked Questions
@@ -134,12 +134,15 @@ export default function Home() {
           <h3 className="text-3xl font-bold mb-6">
             Ready to Transform Your Workflow?
           </h3>
-          <p className="text-xl mb-12">
+          <p className="text-xl text-white mb-12">
             Join thousands of teams already using ZCRUM to streamline their
             projects and boost productivity.
           </p>
           <Link href="/onboarding">
-            <Button size="lg" className="animate-bounce">
+            <Button
+              size="lg"
+              className="animate-bounce bg-white text-black hover:bg-gray-200"
+            >
               Start For Free <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
           </Link>

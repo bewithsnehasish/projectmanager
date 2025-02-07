@@ -1,21 +1,30 @@
 "use client";
 
 import { OrganizationList, useOrganization } from "@clerk/nextjs";
-import { useRouter } from "next/navigation";
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 
 const Onboarding = () => {
-  const { organization } = useOrganization();
-  const router = useRouter();
+  const { isLoaded } = useOrganization(); // Check if organization data is ready
+  const [listLoaded, setListLoaded] = useState(false);
 
+  // Hide loader when OrganizationList is ready
   useEffect(() => {
-    if (organization) {
-      router.push(`/organization/${organization.slug}`);
+    if (isLoaded) {
+      setListLoaded(true);
     }
-  }, [organization]);
+  }, [isLoaded]);
+
+  // Show loader until OrganizationList is ready
+  if (!listLoaded) {
+    return (
+      <div className="flex justify-center items-center min-h-screen">
+        <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-blue-500 border-opacity-75"></div>
+      </div>
+    );
+  }
 
   return (
-    <div className="flex justify-center items-center pt-14">
+    <div className="flex justify-center items-center min-h-screen">
       <OrganizationList
         hidePersonal
         afterCreateOrganizationUrl="/organization/:slug"
@@ -25,4 +34,4 @@ const Onboarding = () => {
   );
 };
 
-export default Onboarding; // Fixed export name
+export default Onboarding;

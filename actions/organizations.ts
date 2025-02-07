@@ -73,7 +73,11 @@ export async function getProjects({ orgId }: { orgId: string }) {
   }
 
   // Fetch all projects for the organization, ordered by creation date
-  const { data: projects } = await db.project.findMany({
+  // const { data: projects } = await db.project.findMany({
+  //   where: { organizationId: orgId },
+  //   orderBy: { createdAt: "desc" },
+  // });
+  const projects = await db.project.findMany({
     where: { organizationId: orgId },
     orderBy: { createdAt: "desc" },
   });

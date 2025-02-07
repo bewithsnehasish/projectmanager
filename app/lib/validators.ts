@@ -13,13 +13,13 @@ export const projectSchema = z.object({
   description: z
     .string()
     .max(500, "Description must be 500 characters or less")
-    .optional(),
+    .default(""),
 });
 
 export const sprintSchema = z.object({
   name: z.string().min(1, "Sprint name is required"),
-  startDate: z.date(),
-  endDate: z.date(),
+  startDate: z.coerce.date(),
+  endDate: z.coerce.date(),
 });
 
 export const issueSchema = z.object({

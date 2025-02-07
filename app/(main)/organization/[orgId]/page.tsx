@@ -1,7 +1,8 @@
-import { getOrganization } from "@/actions/organization";
+import { getOrganization } from "@/actions/organizations";
 import OrgSwitcher from "@/components/org-switcher";
 import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+import ProjectList from "./_components/project-list";
 
 const Organiztion = async ({ params }: { params: { orgId: string } }) => {
   const { orgId } = params;
@@ -14,7 +15,7 @@ const Organiztion = async ({ params }: { params: { orgId: string } }) => {
   const organization = await getOrganization({ slug: orgId });
 
   if (!organization) {
-    <div>Organization not found</div>;
+    return <div>Organization not found</div>;
   }
 
   return (
@@ -26,11 +27,11 @@ const Organiztion = async ({ params }: { params: { orgId: string } }) => {
         <OrgSwitcher />
       </div>
       <div className="mb-2">
-        <ProjectList orgId={organization.id} />
+        <ProjectList orgId={organization?.id} />
       </div>
-      <div>
-        <UserIssues userId={userId} />
-      </div>
+      {/*
+       */}
+      <div>User Issues</div>
     </div>
   );
 };

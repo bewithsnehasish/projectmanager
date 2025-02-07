@@ -13,6 +13,10 @@ import { projectSchema } from "@/app/lib/validators";
 import { createProject } from "@/actions/projects";
 import { BarLoader } from "react-spinners";
 import OrgSwitcher from "@/components/org-switcher";
+import { z } from "zod";
+import { toast } from "sonner";
+
+type ProjectFormData = z.infer<typeof projectSchema>;
 
 export default function CreateProjectPage() {
   const router = useRouter();
@@ -24,7 +28,7 @@ export default function CreateProjectPage() {
     register,
     handleSubmit,
     formState: { errors },
-  } = useForm({
+  } = useForm<ProjectFormData>({
     resolver: zodResolver(projectSchema),
   });
 
@@ -41,17 +45,15 @@ export default function CreateProjectPage() {
     fn: createProjectFn,
   } = useFetch(createProject);
 
-  const onSubmit = async (data) => {
-    if (!isAdmin) {
-      alert("Only organization admins can create projects");
-      return;
-    }
-
+  const onSubmit = async (data: ProjectFormData) => {
     createProjectFn(data);
   };
 
   useEffect(() => {
-    if (project) router.push(`/project/${project.id}`);
+    if (project) {
+      toast.success("Project created successfully");
+      router.push(`/project/${project.id}`);
+    }
   }, [loading]);
 
   if (!isOrgLoaded || !isUserLoaded) {
@@ -87,7 +89,9 @@ export default function CreateProjectPage() {
             placeholder="Project Name"
           />
           {errors.name && (
-            <p className="text-red-500 text-sm mt-1">{errors.name.message}</p>
+            <p className="text-red-500 text-sm mt-1">
+              {errors.name.message?.toString()}
+            </p>
           )}
         </div>
         <div>
@@ -98,7 +102,9 @@ export default function CreateProjectPage() {
             placeholder="Project Key (Ex: RCYT)"
           />
           {errors.key && (
-            <p className="text-red-500 text-sm mt-1">{errors.key.message}</p>
+            <p className="text-red-500 text-sm mt-1">
+              {errors.key.message?.toString()}
+            </p>
           )}
         </div>
         <div>
@@ -110,7 +116,7 @@ export default function CreateProjectPage() {
           />
           {errors.description && (
             <p className="text-red-500 text-sm mt-1">
-              {errors.description.message}
+              {errors.description.message?.toString()}
             </p>
           )}
         </div>
