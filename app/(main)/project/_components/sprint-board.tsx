@@ -13,7 +13,7 @@ import {
 } from "@hello-pangea/dnd";
 import useFetch from "@/hooks/use-fetch";
 
-import statuses from "@/data/status";
+import statuses from "@/data/status.json";
 import { getIssuesForSprint, updateIssueOrder } from "@/actions/issues";
 
 import SprintManager from "./sprint-manager";
