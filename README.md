@@ -1,3 +1,5 @@
+![GetSetDeployed Project Manager](./public/getsetdeployed2.png)
+
 Project Manager Made with Next.js and Prisma is a powerful project management tool designed to help teams organize, track, and manage their work efficiently. It combines intuitive design with robust features to streamline your workflow and boost productivity. Developed by GetSetDeployed, it’s built to meet the needs of modern teams.
 
 ## Features
