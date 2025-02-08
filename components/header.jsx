@@ -4,7 +4,6 @@ import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import UserMenu from "./user-menu";
 import { Home, PenBox } from "lucide-react";
-import Image from "next/image";
 import { checkUser } from "@/lib/checkUser";
 import UserLoading from "./user-loading";
 
@@ -26,8 +25,7 @@ async function Header() {
             />
             */}
             <button className="p-2 bg-blue-500 text-white rounded-md">
-              <Home size={18} />
-              Home
+              <Home size={24} />
             </button>
           </h1>
         </Link>
