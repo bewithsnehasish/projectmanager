@@ -3,7 +3,7 @@ import { Button } from "./ui/button";
 import Link from "next/link";
 import { SignedIn, SignedOut, SignInButton } from "@clerk/nextjs";
 import UserMenu from "./user-menu";
-import { PenBox } from "lucide-react";
+import { Home, PenBox } from "lucide-react";
 import Image from "next/image";
 import { checkUser } from "@/lib/checkUser";
 import UserLoading from "./user-loading";
@@ -16,6 +16,7 @@ async function Header() {
       <nav className="py-6 px-4 flex justify-between items-center">
         <Link href="/">
           <h1 className="text-2xl font-bold">
+            {/*
             <Image
               src={"/getsetdeployed2.png"}
               alt="Zscrum Logo"
@@ -23,6 +24,11 @@ async function Header() {
               height={62}
               className="h-14 w-auto object-contain"
             />
+            */}
+            <button className="p-2 bg-blue-500 text-white rounded-md">
+              <Home size={18} />
+              Home
+            </button>
           </h1>
         </Link>
         <div className="flex items-center gap-4">

@@ -106,7 +106,7 @@ export default function Home() {
       </section>
       */}
       {/* Hero Section */}
-      <section className=" mx-auto pt-20 text-center">
+      <section className=" mx-auto flex flex-col items-center pt-20 text-center">
         <Image
           src={"/getsetdeployed2.png"}
           alt="Zscrum Logo"
@@ -114,6 +114,18 @@ export default function Home() {
           height={120} // Increased height
           className="mx-auto w-auto object-contain" // Centered and responsive width
         />
+        <div className="flex mx-auto gap-3 sm:gap-4 items-center ">
+          <Link href="/onboarding">
+            <Button size="lg" className="mr-4">
+              Get Started <ChevronRight size={18} className="ml-1" />
+            </Button>
+          </Link>
+          <Link href="#features">
+            <Button size="lg" variant="outline">
+              Learn More
+            </Button>
+          </Link>
+        </div>
       </section>
 
       {/* Hero Scroll Animation Section */}
